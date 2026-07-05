@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>무위 · 안현주</title>
+<meta name="description" content="야담 · 심리 콘텐츠 · 스레드 — 모든 링크 모음" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0e0d13;
+    --bg2: #17151f;
+    --card: #1d1a27;
+    --card-hover: #262234;
+    --border: #2e2a3d;
+    --text: #f2f0f7;
+    --muted: #a29db4;
+    --gold: #d9b25f;
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: "Pretendard", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(120% 80% at 50% 0%, #211d2e 0%, var(--bg) 55%);
+    color: var(--text);
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 48px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: 100%; max-width: 440px; }
+
+  .avatar {
+    width: 96px; height: 96px; margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2a2638, #17151f);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; font-weight: 600; letter-spacing: 1px;
+    color: var(--gold);
+  }
+  .name { text-align: center; font-size: 21px; font-weight: 600; }
+  .tagline { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; letter-spacing: .2px; }
+
+  .links { margin-top: 34px; display: flex; flex-direction: column; gap: 13px; }
+  .link {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 17px 20px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 15px; font-weight: 500;
+    transition: transform .12s ease, background .18s ease, border-color .18s ease;
+  }
+  .link:hover { background: var(--card-hover); border-color: #45405a; transform: translateY(-2px); }
+  .link:active { transform: translateY(0); }
+  .ico {
+    width: 34px; height: 34px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 10px;
+    background: #221f2e;
+    font-size: 17px;
+  }
+  .link span { flex: 1; }
+  .arrow { color: var(--muted); font-size: 15px; }
+
+  .foot { text-align: center; margin-top: 34px; font-size: 12px; color: #5f5a70; letter-spacing: .3px; }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="avatar">무위</div>
+    <h1 class="name">무위 · 안현주</h1>
+    <p class="tagline">야담 · 심리 콘텐츠 · 스레드</p>
+
+    <nav class="links">
+      <a class="link" href="#">
+        <span class="ico">▶</span><span>야월당 유튜브</span><span class="arrow">→</span>
+      </a>
+      <a class="link" href="#">
+        <span class="ico">▶</span><span>마인드 글리치 유튜브</span><span class="arrow">→</span>
+      </a>
+      <a class="link" href="#">
+        <span class="ico">✦</span><span>스레드 팔로우</span><span class="arrow">→</span>
+      </a>
+      <a class="link" href="#">
+        <span class="ico">🛒</span><span>오늘의 쿠팡 추천템</span><span class="arrow">→</span>
+      </a>
+      <a class="link" href="#">
+        <span class="ico">📖</span><span>스레드 수익화 강의</span><span class="arrow">→</span>
+      </a>
+    </nav>
+
+    <p class="foot">© 무위</p>
+  </main>
+</body>
+</html>
