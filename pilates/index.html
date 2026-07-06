@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="결 필라테스 — 무료체험 신청">
+<title>결 필라테스 — 무료체험 신청</title>
+</head>
+<body>
+<style>
+  :root{
+    --ground:#F1EDE5;
+    --surface:#FBFAF5;
+    --ink:#23281F;
+    --sage:#46563E;
+    --sage-soft:#5E7053;
+    --clay:#BC6146;
+    --clay-deep:#A24F37;
+    --taupe:#8B8577;
+    --line:#DAD3C6;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',system-ui,sans-serif;
+    --wrap:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:var(--sans);line-height:1.7;
+    -webkit-font-smoothing:antialiased;letter-spacing:-.01em;
+  }
+  h1,h2,h3{line-height:1.15;text-wrap:balance;margin:0;font-weight:800;letter-spacing:-.03em}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--serif);font-style:italic;font-size:15px;
+    color:var(--clay-deep);letter-spacing:.01em;margin-bottom:14px;
+  }
+  .label{
+    font-family:var(--serif);text-transform:uppercase;letter-spacing:.22em;
+    font-size:11px;font-style:normal;color:var(--taupe);font-weight:400;
+  }
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(241,237,229,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:20px;letter-spacing:-.04em}
+  .brand small{font-family:var(--serif);font-style:italic;font-weight:400;font-size:13px;color:var(--taupe);letter-spacing:0}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:0;
+    font-family:var(--sans);font-weight:700;font-size:15px;text-decoration:none;
+    padding:13px 22px;border-radius:2px;transition:transform .18s ease,background .18s ease;
+  }
+  .btn-clay{background:var(--clay);color:#fff}
+  .btn-clay:hover{background:var(--clay-deep);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--ink);padding:10px 16px;border:1px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--ground)}
+  .nav .btn{padding:10px 18px;font-size:14px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  #breath{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-inner{position:relative;z-index:2;padding:88px 0 96px}
+  .hero h1{font-size:clamp(38px,6.4vw,74px)}
+  .hero h1 em{font-style:normal;color:var(--clay)}
+  .hero .sub{max-width:30em;margin-top:24px;font-size:clamp(17px,2.2vw,20px);color:#40453a}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:38px}
+  .trust{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:14px;color:var(--taupe)}
+  .stars{color:var(--clay);letter-spacing:2px}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;background:var(--surface);
+    border:1px solid var(--line);border-radius:100px;padding:7px 15px;
+    font-size:13px;font-weight:700;color:var(--sage);margin-bottom:26px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--clay);animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+  /* sections */
+  section{padding:84px 0}
+  .sec-head{max-width:34em;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(28px,4vw,42px);margin-top:12px}
+  .sec-head p{margin-top:16px;color:#4a4f44;font-size:17px}
+
+  /* pain */
+  .pain{background:var(--ink);color:var(--ground)}
+  .pain .eyebrow{color:#D9A38F}
+  .pain .label{color:#9d9789}
+  .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+  .pain-item{background:var(--ink);padding:30px 28px}
+  .pain-item .q{font-family:var(--serif);font-size:22px;color:var(--clay);font-style:italic;margin-bottom:8px}
+  .pain-item p{color:#cfcabb;font-size:15.5px}
+
+  /* why cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--surface);border:1px solid var(--line);padding:32px 26px;border-radius:3px}
+  .card .num{font-family:var(--serif);font-size:14px;color:var(--clay);letter-spacing:.1em}
+  .card h3{font-size:21px;margin:14px 0 10px}
+  .card p{color:#54594d;font-size:15.5px}
+  .icn{width:44px;height:44px;margin-bottom:6px}
+
+  /* steps */
+  .steps{background:var(--surface)}
+  .step{display:grid;grid-template-columns:88px 1fr;gap:26px;padding:28px 0;border-top:1px solid var(--line)}
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .step .n{font-family:var(--serif);font-size:44px;color:var(--sage);line-height:1}
+  .step h3{font-size:22px;margin-bottom:8px}
+  .step p{color:#54594d;max-width:42em}
+
+  /* testimonials */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .quote{background:var(--surface);border:1px solid var(--line);padding:28px 26px;border-radius:3px;display:flex;flex-direction:column;gap:16px}
+  .quote .stars{font-size:15px}
+  .quote blockquote{margin:0;font-size:16px;color:#3a3f34;line-height:1.65}
+  .quote .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--sage-soft));color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+  .who b{display:block;font-size:14.5px}
+  .who span{font-size:13px;color:var(--taupe)}
+
+  /* offer + form */
+  .offer{background:var(--sage);color:var(--ground)}
+  .offer .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .offer .eyebrow{color:#E7C3B4}
+  .offer h2{font-size:clamp(28px,4vw,44px)}
+  .price{display:flex;align-items:baseline;gap:14px;margin:26px 0 10px}
+  .price .was{text-decoration:line-through;color:#c8cbb9;font-size:22px}
+  .price .now{font-size:52px;font-weight:800;letter-spacing:-.04em}
+  .price .now small{font-size:20px;font-weight:700}
+  .includes{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+  .includes li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:#eae7da}
+  .includes .ck{color:#E7C3B4;font-weight:800;flex:none}
+
+  form{background:var(--surface);color:var(--ink);border-radius:4px;padding:30px 28px;box-shadow:0 24px 60px -30px rgba(0,0,0,.5)}
+  form h3{font-size:20px;margin-bottom:4px}
+  form .fine{font-size:13px;color:var(--taupe);margin-bottom:20px}
+  .field{margin-bottom:15px}
+  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#3a3f34}
+  .field input,.field select{
+    width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:3px;
+    font-family:var(--sans);font-size:15px;background:#fff;color:var(--ink);
+  }
+  .field input:focus,.field select:focus{outline:2px solid var(--sage);outline-offset:1px;border-color:transparent}
+  form .btn-clay{width:100%;justify-content:center;padding:15px;font-size:16px;margin-top:6px}
+  .consent{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--taupe);margin-top:14px;line-height:1.5}
+  .consent input{margin-top:3px;flex:none}
+  .ok{display:none;text-align:center;padding:24px 0}
+  .ok.show{display:block}
+  .ok .big{font-size:40px}
+  .ok h3{font-size:22px;margin:10px 0 6px;color:var(--sage)}
+  .ok p{color:#54594d;font-size:15px}
+
+  /* faq */
+  details{border-top:1px solid var(--line);padding:20px 0}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{color:var(--clay);font-size:22px;transition:transform .2s ease;flex:none}
+  details[open] summary .plus{transform:rotate(45deg)}
+  details p{margin-top:12px;color:#54594d;max-width:52em}
+
+  /* final cta */
+  .final{background:var(--ink);color:var(--ground);text-align:center}
+  .final h2{font-size:clamp(28px,4.4vw,46px);max-width:16em;margin:0 auto 14px}
+  .final p{color:#bdb8aa;max-width:30em;margin:0 auto 30px;font-size:17px}
+
+  footer{background:var(--ink);color:#8f897b;border-top:1px solid rgba(255,255,255,.1);padding:34px 0;font-size:13.5px}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+  .foot .brand{color:var(--ground);font-size:17px}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .pain-grid,.cards,.quotes{grid-template-columns:1fr}
+    .offer .grid{grid-template-columns:1fr;gap:32px}
+    .step{grid-template-columns:1fr;gap:6px}
+    .nav .btn span.hide{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">결<small>GYEOL PILATES · 성수</small></div>
+    <a href="#apply" class="btn btn-clay">무료체험 <span class="hide">신청</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas id="breath"></canvas>
+  <div class="wrap hero-inner">
+    <span class="badge"><span class="dot"></span>이번 달 무료체험 · 선착순 10명</span>
+    <h1>3개월 뒤,<br>거울 앞에서<br><em>다시 웃게</em> 됩니다.</h1>
+    <p class="sub">운동을 못 하는 게 아니라, 내 몸에 맞는 방법을 몰랐을 뿐이에요. 1:1 자세 분석으로 시작하는 성수동 소수정예 리포머 필라테스.</p>
+    <div class="hero-cta">
+      <a href="#apply" class="btn btn-clay">무료 1:1 체험 신청하기 →</a>
+      <a href="#why" class="btn btn-ghost">어떻게 다른가요?</a>
+    </div>
+    <div class="trust"><span class="stars">★★★★★</span> 재등록률 <b style="color:var(--ink)">92%</b> · 누적 수강생 1,400명</div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Sound familiar?</div>
+      <span class="label">이런 고민</span>
+      <h2 style="color:var(--ground);font-size:clamp(26px,4vw,40px);margin-top:14px">헬스장은 3일, 홈트는 작심삼일.<br>이번에도 그럴까 봐 망설이셨죠.</h2>
+    </div>
+    <div class="pain-grid reveal">
+      <div class="pain-item"><div class="q">“어디가 문제인지 몰라요”</div><p>거북목, 골반 틀어짐, 라운드 숄더 — 느낌은 있는데 뭘 해야 할지 모르겠어요.</p></div>
+      <div class="pain-item"><div class="q">“혼자 하면 안 돼요”</div><p>유튜브 따라 해도 자세가 맞는지 알 수 없고, 하다 보면 어깨랑 허리만 아파요.</p></div>
+      <div class="pain-item"><div class="q">“다인 수업은 부담돼요”</div><p>10명씩 하는 그룹 수업에선 내 동작을 제대로 봐주는 사람이 없어요.</p></div>
+      <div class="pain-item"><div class="q">“작심삼일이 무서워요”</div><p>등록만 하고 안 나가게 될까 봐, 큰돈 결제하기가 겁나요.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Why GYEOL</div>
+      <span class="label">우리가 다른 이유</span>
+      <h2>결이 3개월 만에 몸을 바꾸는 세 가지 방법.</h2>
+      <p>기구를 늘리는 대신, 사람을 봅니다. 등록 전에 먼저 몸을 읽는 데서 시작해요.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <svg class="icn" viewBox="0 0 44 44" fill="none" stroke="#BC6146" stroke-width="2"><circle cx="22" cy="14" r="7"/><path d="M8 38c0-8 6-13 14-13s14 5 14 13"/></svg>
+        <div class="num">01</div>
+        <h3>1:1 자세 분석</h3>
+        <p>첫날, 전신 15개 관절을 촬영·측정해 내 몸의 불균형을 리포트로 받아요. 감이 아니라 데이터로 시작합니다.</p>
+      </div>
+      <div class="card reveal">
+        <svg class="icn" viewBox="0 0 44 44" fill="none" stroke="#BC6146" stroke-width="2"><path d="M6 22h32M6 22l7-7M6 22l7 7M38 22l-7-7M38 22l-7 7"/></svg>
+        <div class="num">02</div>
+        <h3>내 몸에 맞춘 설계</h3>
+        <p>분석 결과로 나만의 12주 커리큘럼을 짭니다. 남의 루틴이 아니라, 내 약한 곳부터 순서대로.</p>
+      </div>
+      <div class="card reveal">
+        <svg class="icn" viewBox="0 0 44 44" fill="none" stroke="#BC6146" stroke-width="2"><path d="M22 6l4 10 11 .5-8.5 7 3 10.5L22 28l-9.5 6 3-10.5L7 16.5 18 16z"/></svg>
+        <div class="num">03</div>
+        <h3>최대 4명 소수정예</h3>
+        <p>한 타임 4명까지만. 강사가 모든 동작을 눈으로 잡아주니, 틀린 자세로 반복할 일이 없어요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">How it works</div>
+      <span class="label">체험 이렇게 진행돼요</span>
+      <h2>신청부터 첫 수업까지, 딱 3단계.</h2>
+    </div>
+    <div class="reveal">
+      <div class="step"><div class="n">1</div><div><h3>무료체험 신청</h3><p>아래 폼에 이름·연락처·희망 시간만 남기면 끝. 30초면 됩니다.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>자세 분석 + 상담 (약 20분)</h3><p>방문하시면 전신 자세를 측정하고, 지금 몸 상태와 목표를 함께 정리해요.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>1:1 리포머 체험 (약 40분)</h3><p>분석 결과에 맞춰 실제 수업을 그대로 경험합니다. 등록은 그다음에 천천히 결정하세요.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Real stories</div>
+      <span class="label">수강생 후기</span>
+      <h2>말보다, 바뀐 사람들의 이야기.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <blockquote>“10년 된 거북목 때문에 왔는데, 8주 만에 목 통증이 사라졌어요. 자세 리포트를 보여주면서 설명해주니까 믿음이 갔어요.”</blockquote>
+        <div class="who"><div class="avatar">김</div><div><b>김OO 님</b><span>34세 · 사무직 · 3개월 차</span></div></div>
+      </div>
+      <div class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <blockquote>“그룹수업만 다니다 여기 오니 완전 다르네요. 4명이라 강사님이 계속 잡아주셔서 자세가 진짜 바뀌었어요.”</blockquote>
+        <div class="who"><div class="avatar">이</div><div><b>이OO 님</b><span>29세 · 프리랜서 · 5개월 차</span></div></div>
+      </div>
+      <div class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <blockquote>“출산 후 틀어진 골반 교정하러 왔어요. 무료체험 때 이미 뭐가 문제인지 알게 돼서 바로 등록했습니다.”</blockquote>
+        <div class="who"><div class="avatar">박</div><div><b>박OO 님</b><span>38세 · 워킹맘 · 6개월 차</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="apply">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <div class="eyebrow">This month only</div>
+        <span class="label" style="color:#c9cbb9">이번 달 혜택</span>
+        <h2>자세 분석 + 1:1 체험,<br>이번 달만 무료로.</h2>
+        <div class="price">
+          <span class="was">39,000원</span>
+          <span class="now">0<small>원</small></span>
+        </div>
+        <p style="color:#e0ddce">선착순 <b style="color:#fff">10명</b> 마감 시 정상가로 전환됩니다.</p>
+        <ul class="includes">
+          <li><span class="ck">✓</span> 전신 15관절 자세 분석 리포트 (PDF 제공)</li>
+          <li><span class="ck">✓</span> 1:1 리포머 체험 수업 40분</li>
+          <li><span class="ck">✓</span> 나에게 맞는 12주 커리큘럼 상담</li>
+          <li><span class="ck">✓</span> 등록 강요 없음 — 체험만 하고 가셔도 돼요</li>
+        </ul>
+      </div>
+
+      <form id="applyForm" novalidate>
+        <div id="formBody">
+          <h3>무료체험 신청</h3>
+          <p class="fine">신청 후 담당자가 당일 연락드려요.</p>
+          <div class="field">
+            <label for="name">이름</label>
+            <input id="name" name="name" type="text" placeholder="홍길동" required>
+          </div>
+          <div class="field">
+            <label for="phone">연락처</label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="010-0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="time">희망 시간대</label>
+            <select id="time" name="time" required>
+              <option value="">선택해 주세요</option>
+              <option>평일 오전 (10–12시)</option>
+              <option>평일 오후 (12–18시)</option>
+              <option>평일 저녁 (18–22시)</option>
+              <option>주말</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-clay">무료체험 신청하기 →</button>
+          <label class="consent"><input type="checkbox" id="agree" required><span>개인정보 수집·이용(체험 예약 목적)에 동의합니다. 상담 완료 후 즉시 파기됩니다.</span></label>
+        </div>
+        <div class="ok" id="okMsg">
+          <div class="big">🌿</div>
+          <h3>신청이 접수됐어요!</h3>
+          <p>담당 매니저가 오늘 안에 <b id="okName"></b>님께<br>연락드릴게요. 편한 마음으로 기다려 주세요.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:32px">
+      <div class="eyebrow">Questions</div>
+      <span class="label">자주 묻는 질문</span>
+      <h2>망설이게 하는 것들, 먼저 답할게요.</h2>
+    </div>
+    <div class="reveal">
+      <details open><summary>운동을 한 번도 안 해봤는데 괜찮을까요?<span class="plus">+</span></summary><p>대부분의 회원이 초보로 시작하세요. 오히려 처음일수록 잘못된 습관이 없어서 자세 잡기가 빠릅니다. 강도는 몸 상태에 맞춰 조절하니 걱정 마세요.</p></details>
+      <details><summary>체험만 하고 등록 안 해도 되나요?<span class="plus">+</span></summary><p>물론입니다. 무료체험은 말 그대로 체험이에요. 억지 권유 없이, 직접 겪어보고 스스로 결정하시면 됩니다.</p></details>
+      <details><summary>주차 되나요? 위치가 어디예요?<span class="plus">+</span></summary><p>성수역 3번 출구 도보 4분, 건물 지하 주차 2시간 무료입니다. 신청 시 상세 약도를 문자로 보내드려요.</p></details>
+      <details><summary>가격이 궁금해요.<span class="plus">+</span></summary><p>정규 등록 가격은 자세 분석 상담 때 몸 상태와 목표에 맞춰 안내드려요. 무리한 장기 결제 대신 부담 없는 단위부터 시작할 수 있습니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="color:#D9A38F">Start today</div>
+    <h2>3개월 뒤의 몸은, 오늘 이 버튼에서 시작됩니다.</h2>
+    <p>이번 달 무료체험은 선착순 10명으로 마감돼요. 지금 자리를 잡아두세요.</p>
+    <a href="#apply" class="btn btn-clay">무료 1:1 체험 신청하기 →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="brand">결 GYEOL PILATES</div>
+      <div style="margin-top:6px">서울 성동구 성수동 · 성수역 3번 출구 4분</div>
+    </div>
+    <div style="text-align:right">
+      <div>평일 07:00–22:00 · 주말 09:00–15:00</div>
+      <div style="margin-top:6px">문의 010-0000-0000 · @gyeol.pilates</div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:20px;font-size:12px;opacity:.6">※ 본 페이지는 포트폴리오용 샘플입니다. 실제 업체·후기가 아닙니다.</div>
+</footer>
+
+<script>
+  // 스크롤 등장 애니메이션
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // 전화번호 자동 하이픈
+  const phone=document.getElementById('phone');
+  phone.addEventListener('input',()=>{
+    let v=phone.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>7)v=v.replace(/(\d{3})(\d{4})(\d+)/,'$1-$2-$3');
+    else if(v.length>3)v=v.replace(/(\d{3})(\d+)/,'$1-$2');
+    phone.value=v;
+  });
+
+  // 폼 제출 → 성공 상태
+  const form=document.getElementById('applyForm');
+  form.addEventListener('submit',(ev)=>{
+    ev.preventDefault();
+    const name=document.getElementById('name');
+    const time=document.getElementById('time');
+    const agree=document.getElementById('agree');
+    if(!name.value.trim()){name.focus();return}
+    if(phone.value.replace(/\D/g,'').length<10){phone.focus();return}
+    if(!time.value){time.focus();return}
+    if(!agree.checked){agree.focus();return}
+    document.getElementById('okName').textContent=name.value.trim();
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('okMsg').classList.add('show');
+  });
+
+  // 히어로 배경: 숨쉬듯 번지는 원 (호흡·움직임 은유)
+  const cv=document.getElementById('breath');
+  const ctx=cv.getContext('2d');
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let W,H,t=0;
+  function size(){W=cv.width=cv.offsetWidth*devicePixelRatio;H=cv.height=cv.offsetHeight*devicePixelRatio;}
+  size();window.addEventListener('resize',size);
+  const rings=[{x:.82,y:.32,r:230,c:'188,97,70'},{x:.68,y:.72,r:180,c:'70,86,62'},{x:.92,y:.78,r:150,c:'94,112,83'}];
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    rings.forEach((g,i)=>{
+      const breathe=reduce?1:(1+Math.sin(t/60+i*1.7)*.08);
+      const r=g.r*devicePixelRatio*breathe;
+      const grd=ctx.createRadialGradient(g.x*W,g.y*H,0,g.x*W,g.y*H,r);
+      grd.addColorStop(0,`rgba(${g.c},.20)`);
+      grd.addColorStop(1,`rgba(${g.c},0)`);
+      ctx.fillStyle=grd;ctx.beginPath();ctx.arc(g.x*W,g.y*H,r,0,7);ctx.fill();
+    });
+    t++;if(!reduce)requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+</body>
+</html>

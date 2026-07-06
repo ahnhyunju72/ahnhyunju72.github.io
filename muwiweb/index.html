@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="무위웹 — 소상공인 홈페이지·랜딩페이지 제작">
+<title>무위웹 — 소상공인 홈페이지·랜딩페이지 제작</title>
+</head>
+<body>
+<style>
+  :root{
+    --paper:#F4F2EC;
+    --paper-2:#EBE8DF;
+    --surface:#FCFBF7;
+    --ink:#15171D;
+    --ink-soft:#3A3D47;
+    --blue:#2138DE;
+    --blue-deep:#1a2cb0;
+    --amber:#E39338;
+    --muted:#7B7D87;
+    --line:#DCD8CD;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',system-ui,sans-serif;
+    --wrap:1140px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{margin:0;line-height:1.1;text-wrap:balance;font-weight:850;letter-spacing:-.04em}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 26px}
+  .eyebrow{font-family:var(--serif);font-style:italic;color:var(--blue);font-size:15px;margin-bottom:14px}
+  .label{font-family:var(--serif);text-transform:uppercase;letter-spacing:.24em;font-size:11px;color:var(--muted)}
+  .btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:0;font-family:var(--sans);font-weight:700;font-size:15.5px;padding:15px 26px;border-radius:3px;transition:transform .16s,background .16s}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:var(--blue-deep);transform:translateY(-2px)}
+  .btn-ink{background:var(--ink);color:var(--paper)}
+  .btn-ink:hover{transform:translateY(-2px)}
+  .btn-line{background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:13.5px 24px}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+
+  header{position:sticky;top:0;z-index:60;background:rgba(244,242,236,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:22px;letter-spacing:-.05em}
+  .brand .mk{width:34px;height:34px;background:var(--ink);color:var(--paper);border-radius:8px;display:grid;place-items:center;font-size:17px;font-weight:800}
+  .brand small{font-family:var(--serif);font-style:italic;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:0}
+  .nav .btn{padding:11px 20px;font-size:14.5px}
+
+  /* hero */
+  .hero{position:relative;padding:80px 0 46px;overflow:hidden}
+  .hero .tag{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:13.5px;font-weight:700;color:var(--ink-soft);margin-bottom:30px}
+  .hero .tag .d{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:blip 1.8s ease-in-out infinite}
+  @keyframes blip{0%,100%{opacity:1}50%{opacity:.3}}
+  .hero h1{font-size:clamp(42px,8vw,92px);letter-spacing:-.05em}
+  .hero h1 .u{color:var(--blue);position:relative;white-space:nowrap}
+  .hero h1 .u svg{position:absolute;left:0;bottom:-.12em;width:100%;height:.22em}
+  .hero .sub{max-width:30em;margin-top:26px;font-size:clamp(17px,2.3vw,21px);color:var(--ink-soft)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .hero .note{margin-top:20px;font-size:14px;color:var(--muted)}
+  .hero .note b{color:var(--ink)}
+
+  /* marquee of업종 */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);overflow:hidden;padding:15px 0;margin-top:52px}
+  .track{display:flex;gap:44px;width:max-content;animation:scroll 26s linear infinite;white-space:nowrap}
+  .track span{font-family:var(--serif);font-size:20px;color:var(--ink-soft);display:flex;align-items:center;gap:44px}
+  .track span::after{content:"✦";color:var(--blue);font-size:13px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section{padding:88px 0}
+  .sec-head{max-width:38em;margin-bottom:50px}
+  .sec-head h2{font-size:clamp(30px,4.6vw,50px)}
+  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:18px}
+
+  /* portfolio */
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .work{display:block;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .22s,box-shadow .22s}
+  .work:hover{transform:translateY(-5px);box-shadow:0 30px 60px -34px rgba(21,23,29,.55)}
+  .work .shot{aspect-ratio:16/10;position:relative;overflow:hidden;display:grid;place-items:center;border-bottom:1px solid var(--line)}
+  .work .shot .mock{position:absolute;inset:22px;border-radius:5px;box-shadow:0 12px 34px -18px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden}
+  .work .bar{height:26px;display:flex;align-items:center;gap:5px;padding:0 11px;flex:none}
+  .work .bar i{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.18)}
+  .work .body{flex:1;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+  .work .body .h{font-weight:850;letter-spacing:-.03em;line-height:1.15}
+  .work .body .l{height:6px;border-radius:3px;opacity:.5}
+  .work .body .pill{align-self:flex-start;font-size:10px;font-weight:800;padding:5px 11px;border-radius:100px;margin-top:4px}
+  .work .meta{padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
+  .work .meta h3{font-size:21px}
+  .work .meta .k{font-size:13.5px;color:var(--muted);margin-top:5px}
+  .work .meta .go{font-weight:800;color:var(--blue);font-size:14px;flex:none;white-space:nowrap}
+  .live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:#1f8f4d;text-transform:uppercase;letter-spacing:.08em}
+  .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#25a659;box-shadow:0 0 0 3px rgba(37,166,89,.22)}
+
+  /* services */
+  .svc{background:var(--ink);color:var(--paper)}
+  .svc .eyebrow{color:#93a0ff}
+  .svc .label{color:#7f828e}
+  .svc h2{color:var(--paper)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:6px;overflow:hidden}
+  .svc-item{background:var(--ink);padding:34px 28px}
+  .svc-item .n{font-family:var(--serif);color:var(--amber);font-size:14px;letter-spacing:.1em}
+  .svc-item h3{font-size:23px;margin:14px 0 10px;color:var(--paper)}
+  .svc-item p{color:#b9bcc7;font-size:15.5px}
+  .svc-item .p{margin-top:16px;font-weight:800;font-size:15px;color:#fff}
+  .svc-item.hot{background:linear-gradient(160deg,#1c2fb8,#15171d)}
+  .svc-item.hot .n{color:#ffd79a}
+  .tagline{margin-top:34px;text-align:center;color:#9a9dab;font-size:14.5px}
+
+  /* why */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .why{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:32px 28px}
+  .why .ic{width:46px;height:46px;border-radius:11px;background:var(--paper-2);display:grid;place-items:center;margin-bottom:16px}
+  .why h3{font-size:21px;margin-bottom:9px}
+  .why p{color:var(--ink-soft);font-size:15.5px}
+
+  /* process */
+  .proc{background:var(--paper-2)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  .st{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 22px}
+  .st .n{font-family:var(--serif);font-size:15px;color:var(--blue);letter-spacing:.1em}
+  .st h3{font-size:18px;margin:10px 0 8px}
+  .st p{color:var(--ink-soft);font-size:14.5px}
+
+  /* contact */
+  .contact{background:var(--blue);color:#fff}
+  .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .contact .eyebrow{color:#c7cffa;font-style:italic}
+  .contact h2{color:#fff;font-size:clamp(30px,4.4vw,48px)}
+  .contact .sub{color:#dbe0fb;font-size:18px;margin-top:16px;max-width:24em}
+  .contact .ch{margin-top:26px;display:grid;gap:12px}
+  .contact .ch a,.contact .ch div{display:flex;align-items:center;gap:12px;font-size:16px;color:#eef1ff}
+  .contact .ch b{background:rgba(255,255,255,.16);width:38px;height:38px;border-radius:9px;display:grid;place-items:center;flex:none}
+  form{background:var(--surface);color:var(--ink);border-radius:8px;padding:32px 30px;box-shadow:0 30px 70px -30px rgba(0,0,0,.55)}
+  form h3{font-size:21px;margin-bottom:3px}
+  form .fine{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+  .field{margin-bottom:15px}
+  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--ink-soft)}
+  .field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:4px;font-family:var(--sans);font-size:15px;background:#fff;color:var(--ink)}
+  .field textarea{resize:vertical;min-height:78px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+  form .btn-blue{width:100%;justify-content:center;padding:15px;font-size:16px;margin-top:4px}
+  .ok{display:none;text-align:center;padding:26px 6px}
+  .ok.show{display:block}
+  .ok .big{font-size:42px}
+  .ok h3{font-size:22px;color:var(--blue);margin:10px 0 6px}
+  .ok p{color:var(--ink-soft);font-size:15px}
+
+  footer{background:var(--ink);color:#83868f;padding:40px 0;font-size:13.5px}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:flex-end}
+  .foot .brand{color:var(--paper);font-size:19px}
+  .foot .brand .mk{background:var(--paper);color:var(--ink)}
+  .disc{margin-top:22px;font-size:12px;opacity:.55;max-width:52em}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .work-grid,.svc-grid,.why-grid,.contact .grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .nav .brand small{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="mk">無</span>무위웹<small>&nbsp;WEB · VIDEO STUDIO</small></div>
+    <a href="#contact" class="btn btn-ink">문의하기</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag"><span class="d"></span>이번 달 신규 3곳 제작 가능</span>
+    <h1>사장님의 가게,<br>이제 <span class="u">온라인에도<svg viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M2 8 Q150 1 298 7" stroke="#2138DE" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span><br>있어야 하니까.</h1>
+    <p class="sub">소상공인 전용 홈페이지·랜딩페이지를 <b style="color:var(--ink)">평균 5일</b>이면 완성합니다. 코드는 제가, 사장님은 사진과 이야기만 주세요.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-blue">무료 상담 신청 →</a>
+      <a href="#work" class="btn btn-line">작업물 먼저 보기</a>
+    </div>
+    <p class="note">✅ 정부 지원사업 홈페이지 제작 가능 &nbsp;·&nbsp; ✅ <b>홈페이지 + 홍보 영상</b>까지 한 번에</p>
+  </div>
+  <div class="marquee">
+    <div class="track">
+      <span>필라테스<span></span></span><span>한의원<span></span></span><span>학원<span></span></span><span>네일샵<span></span></span><span>공방<span></span></span><span>카페<span></span></span><span>인테리어<span></span></span><span>PT 스튜디오<span></span></span><span>속눈썹<span></span></span><span>세무사무소<span></span></span>
+      <span>필라테스<span></span></span><span>한의원<span></span></span><span>학원<span></span></span><span>네일샵<span></span></span><span>공방<span></span></span><span>카페<span></span></span><span>인테리어<span></span></span><span>PT 스튜디오<span></span></span><span>속눈썹<span></span></span><span>세무사무소<span></span></span>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Recent work</div>
+      <span class="label">작업 사례</span>
+      <h2>말보다, 만든 걸 보여드릴게요.</h2>
+      <p>아래 카드를 누르면 실제로 만든 페이지가 새 창에서 열립니다. 직접 눌러보고 스크롤해 보세요.</p>
+    </div>
+    <div class="work-grid">
+      <a class="work reveal" href="../pilates/" target="_blank" rel="noopener">
+        <div class="shot" style="background:linear-gradient(150deg,#e7ddd2,#d8c7bb)">
+          <div class="mock" style="background:#F1EDE5">
+            <div class="bar" style="background:#e6ded1"><i></i><i></i><i></i></div>
+            <div class="body">
+              <div class="h" style="color:#23281F;font-size:19px">3개월 뒤,<br>거울 앞에서 <span style="color:#BC6146">웃게</span> 됩니다</div>
+              <div class="pill" style="background:#BC6146;color:#fff">무료체험 신청 →</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta"><div><h3>결 필라테스</h3><div class="k">랜딩페이지 · 무료체험 신청</div></div><div class="go">열어보기 →</div></div>
+      </a>
+
+      <a class="work reveal" href="../hanuiwon/" target="_blank" rel="noopener">
+        <div class="shot" style="background:linear-gradient(150deg,#dfe4d8,#c9d1c1)">
+          <div class="mock" style="background:#F3EFE3">
+            <div class="bar" style="background:#e7e0cf"><i></i><i></i><i></i></div>
+            <div class="body">
+              <div class="h" style="color:#20261F;font-size:19px">증상만 덮지 않고,<br>몸의 <span style="color:#B0432C">뿌리</span>를 봅니다</div>
+              <div class="pill" style="background:#2E4A3E;color:#fff">진료 예약하기 →</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta"><div><h3>솔가한의원</h3><div class="k">홈페이지 · 5개 페이지 (예약·의료진·오시는길)</div></div><div class="go">열어보기 →</div></div>
+      </a>
+    </div>
+    <p class="reveal" style="margin-top:22px;color:var(--muted);font-size:14px"><span class="live">Live</span> &nbsp;위 두 페이지는 실제로 작동하는 데모입니다. 사장님 가게도 이렇게 만들어 드려요.</p>
+  </div>
+</section>
+
+<section class="svc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">What I make</div>
+      <span class="label">제작 메뉴</span>
+      <h2>필요한 만큼만, 딱 맞게.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-item reveal"><div class="n">壹</div><h3>랜딩페이지</h3><p>광고 클릭을 신청으로 바꾸는 한 장짜리 페이지. 인스타·네이버 광고 돌릴 때 딱.</p><div class="p">15만원부터</div></div>
+      <div class="svc-item hot reveal"><div class="n">貳 · 인기</div><h3>홈페이지</h3><p>메뉴·소개·예약·오시는 길까지. 사장님 가게의 온전한 온라인 매장.</p><div class="p">40만원부터</div></div>
+      <div class="svc-item reveal"><div class="n">參 · 단독</div><h3>홈페이지 + 홍보 영상</h3><p>페이지에 얹을 가게 소개 쇼츠까지 함께. 영상까지 되는 곳은 흔치 않아요.</p><div class="p">견적 상담</div></div>
+    </div>
+    <p class="tagline">※ 정부 지원사업(소상공인 온라인 진출·비대면 바우처) 활용 시 부담이 크게 줄어요. 안내해 드립니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Why me</div>
+      <span class="label">이 사람한테 맡기는 이유</span>
+      <h2>대행사보다 빠르고, 가깝고, 진심입니다.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2138DE" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>평균 5일 완성</h3>
+        <p>몇 주씩 기다릴 필요 없어요. 자료 주시면 대부분 5일 안에 초안을 보여드립니다.</p>
+      </div>
+      <div class="why reveal">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2138DE" stroke-width="2"><rect x="2" y="7" width="15" height="10" rx="2"/><path d="M17 10l5-3v10l-5-3z"/></svg></div>
+        <h3>영상까지 되는 1인</h3>
+        <p>홈페이지도, 가게 홍보 쇼츠도 함께 만들어요. 두 군데 맡길 필요가 없죠.</p>
+      </div>
+      <div class="why reveal">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2138DE" stroke-width="2"><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div>
+        <h3>장사를 해본 사람</h3>
+        <p>저도 16년 자영업을 했어요. 사장님이 뭐가 급하고 뭐가 중요한지, 말 안 해도 압니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">How it works</div>
+      <span class="label">진행 순서</span>
+      <h2>맡기고 나면, 편해집니다.</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="st"><div class="n">STEP 1</div><h3>무료 상담</h3><p>어떤 가게인지, 뭘 원하시는지 편하게 이야기 나눠요. 채팅으로도 OK.</p></div>
+      <div class="st"><div class="n">STEP 2</div><h3>자료 전달</h3><p>가게 사진과 소개할 내용만 주세요. 나머지 정리는 제가 합니다.</p></div>
+      <div class="st"><div class="n">STEP 3</div><h3>초안 확인·수정</h3><p>완성된 페이지를 보여드리고, 고치고 싶은 곳을 함께 다듬어요.</p></div>
+      <div class="st"><div class="n">STEP 4</div><h3>오픈</h3><p>인터넷 주소로 공개. 광고에 바로 연결해 손님을 받으세요.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <div class="eyebrow">Let's talk</div>
+        <h2>가게 하나 알려주시면,<br>바로 견적 드릴게요.</h2>
+        <p class="sub">부담 없이 남겨주세요. 무리한 영업 없이, 필요한 것만 정직하게 안내드립니다.</p>
+        <div class="ch">
+          <div><b>💬</b> 카카오톡 · 크몽 채팅 상담 환영</div>
+          <div><b>⏱</b> 보통 당일~다음날 회신</div>
+          <div><b>🧾</b> 정부 지원사업 적용 안내 가능</div>
+        </div>
+      </div>
+      <form id="cForm" novalidate>
+        <div id="cBody">
+          <h3>무료 상담 신청</h3>
+          <p class="fine">남겨주시면 제가 직접 연락드립니다.</p>
+          <div class="field"><label for="cname">성함 / 상호</label><input id="cname" type="text" placeholder="예: 결 필라테스 / 홍길동" required></div>
+          <div class="field"><label for="cphone">연락처</label><input id="cphone" type="tel" inputmode="numeric" placeholder="010-0000-0000" required></div>
+          <div class="field"><label for="ctype">필요한 것</label>
+            <select id="ctype" required><option value="">선택해 주세요</option><option>랜딩페이지 (한 장)</option><option>홈페이지 (여러 페이지)</option><option>홈페이지 + 홍보 영상</option><option>아직 잘 모르겠어요 (상담부터)</option></select>
+          </div>
+          <div class="field"><label for="cmemo">어떤 가게인가요? (선택)</label><textarea id="cmemo" placeholder="업종, 원하는 느낌, 참고 사이트 등 편하게 적어주세요."></textarea></div>
+          <button type="submit" class="btn btn-blue">상담 신청하기 →</button>
+        </div>
+        <div class="ok" id="cOk">
+          <div class="big">🙌</div>
+          <h3>신청 접수됐어요!</h3>
+          <p><b id="cOkName"></b>님, 곧 직접 연락드릴게요.<br>편한 마음으로 기다려 주세요.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand" style="display:flex;align-items:center;gap:10px"><span class="mk" style="width:30px;height:30px;border-radius:7px;display:grid;place-items:center;font-weight:800">無</span>무위웹</div>
+        <div style="margin-top:8px">소상공인 홈페이지 · 랜딩페이지 · 홍보영상 제작</div>
+      </div>
+      <div style="text-align:right">
+        <div>상담 문의 · 카카오톡 / 크몽</div>
+        <div style="margin-top:5px">평균 제작 5일 · 정부 지원사업 안내 가능</div>
+      </div>
+    </div>
+    <div class="disc">※ 본 페이지는 무위님의 홈페이지 제작 서비스를 소개하기 위한 포트폴리오 사이트 초안입니다. 브랜드명(무위웹)·가격·연락처는 예시이며 자유롭게 바꿀 수 있습니다.</div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.13});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const ph=document.getElementById('cphone');
+  ph.addEventListener('input',()=>{let v=ph.value.replace(/\D/g,'').slice(0,11);if(v.length>7)v=v.replace(/(\d{3})(\d{4})(\d+)/,'$1-$2-$3');else if(v.length>3)v=v.replace(/(\d{3})(\d+)/,'$1-$2');ph.value=v});
+
+  document.getElementById('cForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const n=document.getElementById('cname'),t=document.getElementById('ctype');
+    if(!n.value.trim())return n.focus();
+    if(ph.value.replace(/\D/g,'').length<10)return ph.focus();
+    if(!t.value)return t.focus();
+    document.getElementById('cOkName').textContent=n.value.trim();
+    document.getElementById('cBody').style.display='none';
+    document.getElementById('cOk').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
